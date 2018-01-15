@@ -1,23 +1,34 @@
 import React from 'react';
 
 const InfoItem = ({ character, id, selectedId, updateId }) => {
-  // const { character } = props; <-- ES6 way
-  // const character = props.character; <-- ES5 way
+  let content;
   if (id === selectedId) {
-    return (
-      <li>
+    content = (
+      <div>
         <p>{character.name}</p>
         <p>Height: {character.height}</p>
         <p>Birth Year: {character.birth_year}</p>
+      </div>
+    );
+  } else {
+      content = (
+        <li onClick={updateId(id)}>
+          {character.name}
+        </li>)
+    }
+
+    return (
+      <li>
+        {content}
+        <style jsx>{`
+          li {
+            font-size: 44px;
+            padding: 40px;
+            border-bottom: 1px solid yellow;
+          }
+        `}</style>
       </li>
     )
-  } else {
-    return(
-      <li onClick={updateId(id)}>
-        {character.name}
-      </li>
-    );
-  }
 };
 
 export default InfoItem;

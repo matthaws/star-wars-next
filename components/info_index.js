@@ -2,59 +2,45 @@ import React from 'react';
 import InfoItem from './info_item';
 
 class InfoIndex extends React.Component {
-  constructor(props) {
-    super(props);
+  static defaultProps = {
+    info: {
+      results: []
+    }
+  }
 
-    this.state = { info: [], query: '', selectedId: null };
+  constructor(props, defaultProps) {
+    super(props, defaultProps);
+
+    this.state = { query: '', selectedId: null };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateId = this.updateId.bind(this);
   }
 
-  componentDidMount() {
-    // debugger
-    APIUtil.fetchInfo('').then((response) => {
-      this.setState({ info: response.results });
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-
     this.setState({ selectedId: null });
-
-    APIUtil.fetchInfo(this.state.query).then((response) => {
-      this.setState({ info: response.results });
-    });
-
-    // this.state.query = 'query'; <-- DON'T
   }
 
   handleChange(e) {
-    // debugger
     this.setState({ query: e.target.value });
   }
 
   updateId(id) {
-    // this.setState({ selectedId: parseInt(e.target.id) });
-    // this function gets returned when passed to click handler:
     return (e) => {
       this.setState({ selectedId: id });
     };
   }
 
   render() {
-    // here's a comment
-    // debugger
-    const characters = this.state.info.map((character, idx) => (
+    const characters = this.props.info.results.map((character, idx) => (
       <InfoItem
         character={character}
         key={idx}
         id={idx}
         selectedId={this.state.selectedId}
         updateId={this.updateId}
-
         />
     ));
 
@@ -76,9 +62,44 @@ class InfoIndex extends React.Component {
         <ul>
           {characters}
         </ul>
+        <style jsx>{`
+          form {
+            text-align: center;
+          }
+
+          label {
+            font-family: StarWars;
+            font-size: 20px;
+          }
+
+          input[type="text"] {
+            display: block;
+            margin: 50px auto;
+            height: 50px;
+            width: 400px;
+            font-size: 35px;
+            font-family: StarWars;
+          }
+
+          input[type="submit"] {
+            background-color: black;
+            border: 1px solid yellow;
+            padding: 10px;
+            border-radius: 5px;
+            color: yellow;
+            font-size: 20px;
+            font-family: StarWars;
+            cursor: pointer;
+          }
+
+          ul {
+            padding: 100px;
+            list-style: none;
+            text-align: center;
+            font-family: StarWars;
+          }`}</style>
       </div>
     );
-    // here's another
   }
 }
 
