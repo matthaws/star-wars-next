@@ -24,13 +24,12 @@ const Contact = () => (
         padding: 0;
         display: flex;
         justify-content: space-between;
-        width: 66%;
-        margin: 0 auto;
         border-top: 1px solid yellow;
       }
 
       a {
         color: yellow;
+        padding-left: 20px;
         text-decoration: none;
       }
     `}</style>

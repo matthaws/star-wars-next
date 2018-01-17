@@ -1,4 +1,4 @@
-@font-face {
+const styles = `@font-face {
   font-family: StarWars;
   src: url(special_font.woff)
 }
@@ -9,10 +9,10 @@ body {
   background-image: url(1.jpg);
 }
 
-h1 {
-  text-align: center;
+#title {
   font-size: 60px;
   font-family: StarWars;
+  grid-column-start: 1;
 }
 
 form {
@@ -24,7 +24,7 @@ label {
   font-size: 20px;
 }
 
-input[type="text"] {
+input[type='text'] {
   display: block;
   margin: 50px auto;
   height: 50px;
@@ -33,7 +33,7 @@ input[type="text"] {
   font-family: StarWars;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   background-color: black;
   border: 1px solid yellow;
   padding: 10px;
@@ -55,4 +55,6 @@ li {
   font-size: 44px;
   padding: 40px;
   border-bottom: 1px solid yellow;
-}
+}`
+
+export default styles;

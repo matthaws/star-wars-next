@@ -45,7 +45,7 @@ class InfoIndex extends React.Component {
     ));
 
     return(
-      <div>
+      <div className="search">
         <form onSubmit={ this.handleSubmit }>
           <label>CHOOSE YOUR DESTINY.
             <input
@@ -59,45 +59,9 @@ class InfoIndex extends React.Component {
             value='USE THE FORCE'
             />
         </form>
-        <ul>
-          {characters}
+        <ul id="characters">
+            {characters}
         </ul>
-        <style jsx>{`
-          form {
-            text-align: center;
-          }
-
-          label {
-            font-family: StarWars;
-            font-size: 20px;
-          }
-
-          input[type="text"] {
-            display: block;
-            margin: 50px auto;
-            height: 50px;
-            width: 400px;
-            font-size: 35px;
-            font-family: StarWars;
-          }
-
-          input[type="submit"] {
-            background-color: black;
-            border: 1px solid yellow;
-            padding: 10px;
-            border-radius: 5px;
-            color: yellow;
-            font-size: 20px;
-            font-family: StarWars;
-            cursor: pointer;
-          }
-
-          ul {
-            padding: 100px;
-            list-style: none;
-            text-align: center;
-            font-family: StarWars;
-          }`}</style>
       </div>
     );
   }

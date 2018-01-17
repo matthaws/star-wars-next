@@ -12,21 +12,14 @@ const InfoItem = ({ character, id, selectedId, updateId }) => {
     );
   } else {
       content = (
-        <li onClick={updateId(id)}>
-          {character.name}
-        </li>)
+        <div onClick={updateId(id)}>
+          <p>{character.name}</p>
+        </div>)
     }
 
     return (
       <li>
         {content}
-        <style jsx>{`
-          li {
-            font-size: 44px;
-            padding: 40px;
-            border-bottom: 1px solid yellow;
-          }
-        `}</style>
       </li>
     )
 };
